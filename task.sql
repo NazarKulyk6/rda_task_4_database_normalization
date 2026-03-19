@@ -1,5 +1,6 @@
 -- Create database and tables
 
+DROP DATABASE IF EXISTS ShopDB;
 CREATE DATABASE ShopDB;
 USE ShopDB;
 
@@ -30,9 +31,9 @@ CREATE TABLE Warehouses (
 -- Table 4: ProductInventory (normalized - only 4 columns: ID, ProductID, WarehouseAmount, WarehouseID)
 CREATE TABLE ProductInventory (
     ID              INT NOT NULL,
-    ProductID       INT,
+    ProductID       INT NOT NULL,
     WarehouseAmount INT NOT NULL,
-    WarehouseID     INT,
+    WarehouseID     INT NOT NULL,
     FOREIGN KEY (ProductID)   REFERENCES Products(ID)   ON DELETE NO ACTION,
     FOREIGN KEY (WarehouseID) REFERENCES Warehouses(ID) ON DELETE NO ACTION,
     PRIMARY KEY (ID)
